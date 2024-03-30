@@ -32,8 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'pages.apps.Pages.Config',
-    'books.apps.Books.Config',
+    'pages.apps.PagesConfig',
+    'books.apps.BooksConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,10 +55,9 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'Library_management_system.urls'
 
 TEMPLATES = [
-    os.path.join(BASE_DIR,'templates'),
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
