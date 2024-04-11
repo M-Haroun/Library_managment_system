@@ -126,10 +126,10 @@
             </div>
           </div>
           <!-- books -->
-          {% for book in books %}
           <div class="row">
 
-          <!-- الكتب -->
+          {% for book in books %}
+                    <!-- الكتب -->
               <div id="" class="col-md-4">
                   <!-- Widget: user widget style 1 -->
                 <div id="" class="card card-widget widget-user ">
@@ -185,13 +185,20 @@
                 </div>
                   <!-- /.widget-user -->
               </div>
-          <!-- نهاية الكتاب -->
-                   </div> 
+          <!-- نهاية الكتاب --> 
               {% endfor %}   
+              <div class="row">
+                <div class="col text-center">
+                  <!--اضف صورة هنا في حالة عدم وجود كتب-->   
+                </div>
+              </div>
+          </div>    
       </div>
     </div>
         <!-- /.container-fluid -->
   </div>
       <!-- /.content -->
+</div>
+    <!-- /.content-wrapper -->
 
 {% endblock contents %}
