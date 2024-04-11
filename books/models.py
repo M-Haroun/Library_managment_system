@@ -15,9 +15,9 @@ class Book(models.Model):
         ('sold','sold')
     ]
     title = models.CharField(max_length=250)
-    auther = models.CharField(max_length=250, null=True,  blank=True)
+    author = models.CharField(max_length=250, null=True,  blank=True)
     photo_book = models.ImageField(upload_to='photos/book/%y/%m/%d', null=True,  blank=True)
-    photo_auther= models.ImageField(upload_to='photos/auther/%y/%m/%d', null=True,  blank=True)
+    photo_author= models.ImageField(upload_to='photos/auther/%y/%m/%d', null=True,  blank=True)
     pages = models.IntegerField(null=True,  blank=True)
     price = models.DecimalField(max_digits=8, decimal_places=2,null=True,  blank=True)
     retal_price_day = models.DecimalField(max_digits=8, decimal_places=2,null=True,  blank=True)
