@@ -165,15 +165,29 @@
                         <!-- /.col -->
                     <div class="col-sm-4 border-right">
                       <div class="description-block">
+                        {% if book.status == "available" or book.status == "sold" %}
                         <h5 class="description-header">${{book.price}}</h5>
                         <span class="description-text">السعر</span>
+                        {% elif book.status == 'rental' %}
+                        <h5 class="description-header">${{book.retal_price_day}}</h5>
+                        <span class="description-text"> السعر يوميا</span>
+                        {% else %}
+                        <h5 class="description-header">$--</h5>
+                        <span class="description-text">السعر</span>
+                        {% endif %}
                       </div>
                       <!-- /.description-block -->
                     </div>
                         <!-- /.col -->
                     <div class="col-sm-4">
                       <div class="description-block">
-                        <h5 class="description-header text-dark">{{book.status}}</h5>
+                        {% if book.status == "available" %}
+                        <h5 class="description-header text-success">{{book.status}}</h5>
+                        {% elif book.status == "rental" %}
+                        <h5 class="description-header text-warning">{{book.status}}</h5>
+                        {%else%}
+                        <h5 class="description-header text-danger">{{book.status}}</h5>
+                        {% endif %}
                         <span class="description-text">الحالة</span>
                       </div>
                       <!-- /.description-block -->
