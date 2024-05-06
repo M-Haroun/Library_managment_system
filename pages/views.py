@@ -7,6 +7,6 @@ from random import sample
 def index(request):
     Book_data=Book.objects.all()
     Cat_data=Category.objects.all()
-    Cat_random = sample(list(Cat_data), 4)
+    Cat_random = sample(list(Cat_data), 5)
     return render(request,'pages/index.html',{'books':Book_data,'categories':Cat_data,
                                               'random_categories':Cat_random})
