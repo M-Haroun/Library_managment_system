@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from books.models import Book, Category
 
 # Create your views here.
 def books(request):
-    return render(request,"books/books.html")
+    Book_data=Book.objects.all()
+    return render(request,"books/books.html",{'books':Book_data})
