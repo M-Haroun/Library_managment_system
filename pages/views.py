@@ -10,15 +10,22 @@ def index(request):
     Cat_data=Category.objects.all()
     Cat_random = sample(list(Cat_data), 5)
     Book_form=BookForm()
+    Category_form=CategoryForm()
     
     if request.method == 'POST':
         BookForm_data = BookForm(request.POST, request.FILES)
         if BookForm_data.is_valid():
             BookForm_data.save() 
+                
+        Category_data = CategoryForm(request.POST)
+        if Category_data.is_valid():
+            Category_data.save() 
+
     
     context = {'books':Book_data,
                'categories':Cat_data,
                'random_categories':Cat_random,
                'bookform':Book_form,
+               'categoryform':Category_form,
                }
     return render(request,'pages/index.html',context)

@@ -6,7 +6,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div style="width: 250px; position: absolute; overflow-y: auto;" class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
@@ -46,11 +46,12 @@
                     </a>
                   </li> 
               <form id="cat" method="POST">
-             
-                  <input type="text" class="form-control">
-
+                {% csrf_token %}
+                <div id= "catinput">
+                  {{categoryform}}
                   <button type="submit" class="btn btn-success">save</button>
                   <button id="backcat" class="btn btn-primary ">back</button>
+                </div>
               </form>  
                 {% for  cat in categories %}
                   <li style="cursor: pointer;" class="nav-item">
