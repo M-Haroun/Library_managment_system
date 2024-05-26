@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from books.models import Book, Category
 from books.forms import BookForm, CategoryForm
 from random import sample
@@ -29,3 +29,17 @@ def index(request):
                'categoryform':Category_form,
                }
     return render(request,'pages/index.html',context)
+
+def update(request, id):
+    book_id = Book.objects.get(id = id)
+    if request.method == 'POST':
+        book_update = BookForm(request.POST, request.FILES, instance = book_id)
+        if book_update.is_valid():
+            book_update.save()
+            return redirect('/')
+    else:
+        book_update = BookForm(instance = book_id)
+    context = {
+        'updateform': book_update,
+    }   
+    return render(request, 'books/update.html', context)
