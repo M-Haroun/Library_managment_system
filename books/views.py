@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Book, Category
 from .forms import CategoryForm, BookForm
-from pages.views import update
+from pages.views import update,delete
 
 # Create your views here.
 def books(request):
@@ -22,4 +22,7 @@ def books(request):
 
 def update_book(request, id):
     return update(request, id,'books')
+
+def delete_book(request, id):
+    return delete(request, id,'books')
     

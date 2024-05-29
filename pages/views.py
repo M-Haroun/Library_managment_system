@@ -43,3 +43,11 @@ def update(request, id, redirect_page = '/'):
         'updateform': book_update,
     }   
     return render(request, 'books/update.html', context)
+
+def delete(request, id, redirect_page = '/'):
+    book_delete = Book.objects.get(id = id)
+    if request.method == 'POST':
+        book_delete.delete()
+        return redirect(redirect_page)
+        
+    return render(request, 'books/delete.html')
