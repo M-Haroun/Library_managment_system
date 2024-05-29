@@ -30,13 +30,13 @@ def index(request):
                }
     return render(request,'pages/index.html',context)
 
-def update(request, id):
+def update(request, id, redirect_page = '/'):
     book_id = Book.objects.get(id = id)
     if request.method == 'POST':
         book_update = BookForm(request.POST, request.FILES, instance = book_id)
         if book_update.is_valid():
             book_update.save()
-            return redirect('/')
+            return redirect(redirect_page)
     else:
         book_update = BookForm(instance = book_id)
     context = {

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Book, Category
-from .forms import CategoryForm
+from .forms import CategoryForm, BookForm
+from pages.views import update
 
 # Create your views here.
 def books(request):
@@ -18,3 +19,7 @@ def books(request):
                'categoryform':Category_form,
                }
     return render(request,"books/books.html",context)
+
+def update_book(request, id):
+    return update(request, id,'books')
+    
