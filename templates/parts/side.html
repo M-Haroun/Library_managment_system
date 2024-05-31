@@ -54,7 +54,7 @@
                 </div>
               </form>  
                 {% for  cat in categories %}
-                  <li style="cursor: pointer;" class="nav-item">
+                  <li style="cursor: pointer;" class="nav-item cat{{cat.id}}">
                     <a id="" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>{{cat.name}}</p>
@@ -65,21 +65,21 @@
             </ul>
           </li>
 
-          <li class="nav-header">الكتب المستعارة</li>
+          <li class="nav-header">حالةالكتاب</li>
           
-          <li style="cursor: pointer;" class="nav-item">
+          <li style="cursor: pointer;" class="nav-item statussold">
             <a id="statusSold" class="nav-link">
               <i class="nav-icon far fa-circle text-danger"></i>
               <p class="text">تم بيعه</p>
             </a>
           </li>
-          <li style="cursor: pointer;" class="nav-item">
+          <li style="cursor: pointer;" class="nav-item statusrental">
             <a id="" class="nav-link">
               <i class="nav-icon far fa-circle text-warning"></i>
               <p>تم استعارته</p>
             </a>
           </li>
-          <li style="cursor: pointer;" class="nav-item">
+          <li style="cursor: pointer;" class="nav-item statusavailable">
             <a id="" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>متاح</p>
