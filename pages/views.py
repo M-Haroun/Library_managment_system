@@ -27,6 +27,10 @@ def index(request):
                'random_categories':Cat_random,
                'bookform':Book_form,
                'categoryform':Category_form,
+               'allbooksnum':Book.objects.filter(active = True).count(),
+               'availablebooksnum':Book.objects.filter(status = 'available').count(),
+               'soldbooksnum':Book.objects.filter(status = 'sold').count(),
+               'rentalbooksnum':Book.objects.filter(status = 'rental').count(),
                }
     return render(request,'pages/index.html',context)
 
