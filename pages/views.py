@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from books.models import Book, Category
 from books.forms import BookForm, CategoryForm
 from random import sample
@@ -35,7 +35,7 @@ def index(request):
     return render(request,'pages/index.html',context)
 
 def update(request, id, redirect_page = '/'):
-    book_id = Book.objects.get(id = id)
+    book_id = get_object_or_404(Book,id = id)
     if request.method == 'POST':
         book_update = BookForm(request.POST, request.FILES, instance = book_id)
         if book_update.is_valid():

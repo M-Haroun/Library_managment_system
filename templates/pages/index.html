@@ -23,7 +23,7 @@
                   <div class="d-flex">
                     <p class="d-flex flex-column">
                       <span class="text-bold text-lg">{{allbooksnum}}</span>
-                      <span>اجمالي عدد الكتب</span>
+                      <span>نسب عدد الكتب</span>
                     </p>  
                   </div>
                   <!-- /.d-flex -->
@@ -36,10 +36,30 @@
               <!-- /.card -->
             </div>
             <!-- /.col-md-6 -->
-            
+            {% for book in books %}
+            {% if book.status == 'sold' and book.price != None %}
+            <p class='total_income'>{{book.price}}</p>
+            {% endif %}
+            {% if book.status == 'sold' and book.profits != None %}
+            <p class='sold_profits'>{{book.profits}}</p>
+            {% endif %}
+            {% if book.status == 'rental' and book.retal_total != None %}
+            <p class='total_income total_rental_income'>{{book.retal_total}}</p>
+            {% endif %}
+            {% endfor %}
+            <p class = 'all_sold_profits'></p>
+            <p class = 'all_rental_profits'></p>
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-header border-0">
+                  <div class="d-flex justify-content-between">
+                    <h3 class="card-title">اجمالي الدخل</h3>   
+                </div>  
+                 <div class="d-flex">
+                  <p class="d-flex flex-column">
+                    <span id="totalsalarys" class="text-bold text-lg"></span><br></p>
+                </div>
+
                   <div class="d-flex justify-content-between">
                     <h3 class="card-title">الارباح</h3>   
                   </div>
@@ -47,10 +67,10 @@
                 <div class="card-body">
                   <div class="d-flex">
                     <p class="d-flex flex-column">
-                      <span id="totalsalarys" class="text-bold text-lg">$250</span><br></p>
-                  </div>
+                      <span id="total_profits" class="text-bold text-lg"></span><br></p>
+                    </div>
                   <!-- /.d-flex -->
-  
+                  
                   <div class="position-relative mb-4">
                     <canvas id="sales-chart" height="160"></canvas>
                   </div>

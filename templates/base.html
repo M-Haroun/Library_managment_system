@@ -65,6 +65,41 @@
 /*حساب اجمالي الارباح و هي عبارة عن حاصل جمع سعر الكتب عند البيع بالاضافة الى سعر استعارة الكتاب*/
   });
 </script>
+<!-- Script for show make statistics for earnings and total income -->
+<script>
+  $('#retalDays').keyup(function(){
+    $('#retalTotal').val($('#retalDays').val()*$('#retalDayPrice').val())
+  });
+  $('#profitratio').keyup(function(){
+    $('#allprofits').val($('#profitratio').val()*$('#bookPrice').val())
+  });
+  $(document).ready(function(){
+    var income = 0;
+    var profits_rental = 0;
+    var profits_sold = 0;
+    var profits = 0;
+    $('.total_income').each(function(){
+      $(this).hide()
+      var salary = $(this).text()
+      income += parseInt(salary)
+    });
+    $('#totalsalarys').text(income+'$')
+
+    $('.total_rental_income').each(function(){
+      var salary = $(this).text()
+      profits_rental += parseInt(salary)
+      });
+    $('.sold_profits').each(function(){
+      $(this).hide()
+        var salary = $(this).text()
+        profits_sold += parseInt(salary)
+    });
+    profits = profits_rental+profits_sold
+    $('#total_profits').text(profits+'$')
+    $('.all_sold_profits').text(profits_sold).hide()
+    $('.all_rental_profits').text(profits_rental).hide()
+  });
+</script>
 
 <script>
 $(function () {
@@ -99,14 +134,14 @@ $(function () {
           backgroundColor: '#007bff',
           borderColor    : '#007bff',
           data           : [ 
-               '50',
+              $('.all_sold_profits').text()
           ]
         },
         {
           backgroundColor: '#ced4da',
           borderColor    : '#ced4da',
           data           : [ 
-                '30',
+          $('.all_rental_profits').text()
           ]
         }
       ]
