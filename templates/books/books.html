@@ -21,6 +21,7 @@
               <div class="card-body pb-0">
                 <div class="row d-flex align-items-stretch">
                   <!-- بداية الكتاب -->
+                  {% if books %}
                   {% for book in books %}
                   <div   class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch  ">
                     <div  id="" class="card bg-light bookhide book{{book.category.id}} book{{book.status}}">
@@ -62,6 +63,9 @@
                     </div>
                   </div>
                   {% endfor %}
+                  {% else %}
+                  <h1>No Results</h1>
+                  {% endif %}
                    <!-- نهاية الكتاب -->
                 </div>
               </div>
